@@ -15,23 +15,50 @@ import java.util.Scanner;
  * 3. 提交代码到分支下，创建pull request，与主仓库的master分支对比
  */
 public class DifferentFormat {
-	@SuppressWarnings("resource")
-	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		Locale locale = Locale.US; 
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale); //修改格式
-		while (scanner.hasNext()){
-			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
-			try {
-				lineDate = inputFormat.parse(line);
-				lineTimestamp = lineDate.getTime();
-				System.out.println(lineTimestamp);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+	public static void main(String[] args){ 
+ 		Scanner scanner = new Scanner(System.in); 
+ 		Locale locale = Locale.US;  	
+ 		SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy:HH:mm:ss");//修改格式 
+ 		while (scanner.hasNext()){ 
+ 			String line = scanner.nextLine(); 
+ 			String str[] = line.split("/");
+ 			String yy = "";
+ 			Date lineDate = null; 
+ 			long lineTimestamp; 
+ 			switch(str[1]){
+ 			case "Jan":
+ 				yy ="01";break;
+ 			case "Feb":
+ 				yy ="02";break;
+ 			case "Mar":
+ 				yy ="03";break;
+ 			case "Apr":
+ 				yy ="04";break;
+ 			case "May":
+ 				yy ="05";break;
+ 			case "JUN":
+ 				yy ="06";break;
+ 			case "JUL":
+ 				yy ="07";break;
+ 			case "Aug":
+ 				yy ="08";break;
+ 			case "Sep":
+ 				yy ="09";break;
+ 			case "Otc":
+ 				yy ="10";break;
+ 			case "Nov":
+ 				yy ="11";break;
+ 			case "Dec":
+ 				yy ="12";break;
+ 			}
+ 			try { 
+ 				lineDate = inputFormat.parse(line.replaceAll(str[1], yy)); 
+ 				lineTimestamp = lineDate.getTime(); 
+ 				System.out.println(lineTimestamp); 
+ 			} catch (ParseException e) { 
+ 				// TODO Auto-generated catch block 
+ 				e.printStackTrace(); 
+ 			} 
+ 		} 
+ 	}
 }
