@@ -34,19 +34,23 @@ public class FilterByTime {
  				String strIp = m.group(1); 
  	 			String strTime = m.group(2);
  	 			//将String转换转换成时间
- 	 			Date lineDate = null; 
- 	 			lineDate = inputFormat.parse(strTime.replaceAll("Dec", "12"));
- 	 			//将时间转换成毫秒数
- 	 			long lineTimestamp;
- 	 			long begin;
- 	 			long end;
- 	 			lineTimestamp = lineDate.getTime();
- 	 			begin = beginDate.getTime();
- 	 			end = endDate.getTime();
- 	 			
- 	 			// 比较时间，对在时间区间内的数据进行输出 
- 	 			if((lineTimestamp>begin)&&(lineTimestamp<end)){
- 	 				System.out.println(strIp + "\t" + strTime); 
+ 	 			Date lineDate = null;
+ 	 			String str[] = strTime.split("/");
+ 	 			if(str[1].equals("Dec")){
+ 	 				lineDate = inputFormat.parse(strTime.replaceAll("Dec", "12"));
+ 	 				//将时间转换成毫秒数
+ 	 				long lineTimestamp;
+ 	 				long begin;
+ 	 				long end;
+ 	 				lineTimestamp = lineDate.getTime();
+ 	 				begin = beginDate.getTime();
+ 	 				end = endDate.getTime();
+ 	 				
+ 	 				// 比较时间，对在时间区间内的数据进行输出 
+ 	 				if((lineTimestamp>begin)&&(lineTimestamp<end)){
+ 	 					//System.out.println(strIp + "\t" + regularFormat.format(lineDate));
+ 	 					System.out.println(strIp + "\t" + strTime);
+ 	 				}
  	 			}
  			}
  		} 
