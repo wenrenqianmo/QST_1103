@@ -13,24 +13,23 @@ import java.util.Scanner;
  * 2. 对代码进行注释，说明每行代码的作用，把代码提交到个人分支下
  * 3. 创建pull request，与主仓库的master分支对比
  */
-public class TimestampTransfer {
-	@SuppressWarnings("resource")
-	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		while (scanner.hasNext()){
-			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
-			try {
-				lineDate = inputFormat.parse(line);
-				lineTimestamp = lineDate.getTime();
-				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-}
+public class TimestampTransfer { 
+	@SuppressWarnings("resource") 
+	 public static void main(String[] args){ 
+	 	Scanner scanner = new Scanner(System.in); //标准输入
+	 	SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //输入时间的格式
+	 	SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); //输出时间的格式
+	 	while (scanner.hasNext()){ 
+	 		String line = scanner.nextLine(); //接收输入的字符串
+	 		Date lineDate = null; 
+	 		long lineTimestamp; 
+	 		try { 
+	 			lineDate = inputFormat.parse(line); //字符串转换成时间
+	 			lineTimestamp = lineDate.getTime(); //时间转换成毫秒long
+	 			System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp); //输出第二种格式的时间和毫秒数long
+	 		} catch (ParseException e) { 
+	 			e.printStackTrace(); //异常
+	 		} 
+	 	} 
+	 } 
+} 
